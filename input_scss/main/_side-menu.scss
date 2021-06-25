@@ -1,0 +1,119 @@
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 20%;
+  height: 100%;
+  border-right: 1px solid lightgrey;
+}
+
+#sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 40%;
+  width: 100%;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  .side-button {
+    align-self: center;
+    width: 80%;
+    height: 5em;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+}
+
+#email-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+
+}
+
+#input-outer {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 20.1%;
+  width: 25em;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #0080ff;
+
+
+  #input-arrow {
+    position: absolute;
+    border-top: none;
+    border-right: none;
+    transform: rotate(45deg);
+    top:35%;
+    left: -1.3em;
+    width: 39px;
+    height: 39px;
+    background-color: inherit;
+
+  }
+  #input-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 5em;;
+
+    margin-top: -15px;
+    input{
+      width: 60%;
+      height: 3em;
+      background-color: white;
+      margin-left: 1em;
+      border-radius: 5px 0px 0px 5px;;
+      border-right: none;
+      border: 1px solid lightgrey;
+      outline: none;
+      padding: 0px 0px 0px 10px;
+
+    }
+    button {
+      width: 3.1em;
+      height: 3.15em;
+      border: 1px solid lightgrey;
+      outline: none;
+      border-radius: 0px 5px 5px 0px;
+    }
+}
+  h2 {
+    display: flex;
+    align-items: center;
+    margin: -5px 0px -5px 0px;
+    height: 3em;
+    font-size: 17px;
+    color: white;
+  }
+}
+
+
+.button-image-new {
+  background-color: #1aff1a;
+}
+
+
+.button-link-email {
+  background-color: #0080ff;
+
+}
+
+.hidden {
+  display: none;
+}
+.active {
+  display: flex;
+}

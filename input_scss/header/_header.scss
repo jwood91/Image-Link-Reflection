@@ -1,0 +1,46 @@
+
+
+#page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid lightgrey;
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 2em;
+    width: 10em;
+    border: 1px solid red;
+  }
+
+}
+
+#site-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1{
+    height: 0.2em;
+  }
+
+}
+
+#header-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  width: 100%;
+}
+
+#my-button {
+  position: absolute;
+  left: 6em;
+}

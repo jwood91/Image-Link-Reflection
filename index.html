@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  <head>
+      <meta charset="UTF-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+      <script src="https://kit.fontawesome.com/cd35332ff4.js"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="node_modules/offside-js/dist/offside.css">
+        <script src="node_modules/offside-js/dist/offside.js"></script>
+        <link rel="stylesheet" href="output_css/styles.css">
+      <title>ImageLINK | link images to your email!</title>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="my-content-container">
+        <header>
+          <div id="page-header">
+            <button type="button" id="my-button">Email's with Linked Images</button>
+            <div id="header-inner">
+
+              <div id="site-logo">
+                  <a href="#"><h1>imageLINK</h1></a>
+                  <p>Link images to your email.</p>
+              </div>
+            </div>
+
+          </div>
+        </header>
+
+       <div id="main-container">
+            <div id="sidebar">
+              <div id="sidebar-inner">
+                <button id="new-image" class="side-button button-image-new">Next Image</button>
+                <div id="email-link">
+                    <button id="button-link" class="side-button button-link-email" onClick="toggleLink()"><i class="fas fa-link"></i>Link to email</button>
+                    <div id="input-outer" class="hidden">
+                      <div id="input-arrow"></div>
+                      <h2>Enter Your Email to Link Picture</h2>
+                      <div id="input-info">
+                          <input id="email-entry" type="text" placeholder="Enter Email Here.."></input>
+                          <button type="submit" onclick="linkImage()"><i class="fas fa-link"></i></button>
+                      </div>
+                    </div>
+                </div>
+
+                <div id="image-information">
+                  <ul id="Image-info">
+                    <div id="info-head"><span>Image</span><input type="number" id="image-id" name="image-id" value="" readonly></span></div>
+                    <li>Author<input type="text" id="author-name" value="" readonly></input>
+                    <li><a id="website-link" href="#">View image on Unsplash</a></li>
+                  </ul>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="image-window"><img id="unsplash" value="" src="" alt="picsum-image"> </div>
+          </div>
+        </div>
+        <nav id="my-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/main.js"></script>
+
+
+        <script>
+            //Offside.js minimal setup
+            var myOffside = offside( '#my-menu', {
+
+                slidingElementsSelector:'#my-content-container',
+                buttonsSelector: '#my-button, .another-button',
+
+            });
+          </script>
+
+
+  </body>
+
+  </html>
