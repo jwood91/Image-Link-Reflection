@@ -36,8 +36,18 @@ $(document).ready(function() {
 
 /* onClick function for generating a new image */
 $(function() {
+  imgTagThere = false
   $("#new-image").click(function() {
-    getImages();
+    if ($('#unsplash').length) {
+      getImages()
+      console.log('image is there')
+
+    } else {
+      $('#image-window').append($("<img id='unsplash' src=''/>"));
+      console.log('image is not there')
+      getImages()
+    };
+
 
   });
 });
@@ -48,12 +58,22 @@ function toggleLink() {
   $(`#input-outer`).toggleClass('active');
   console.log('linked');
 }
+
+
+// let
+//
+// function emailList() {
+//     linkedEmails[]
+// }
+
+
 /* validate email onclick when linking image */
 let linkedEmails = { };
 
+
 function linkImage() {
     const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
-    let currentImage = $(`#unsplash`).attr("value");
+    let currentImage = $(`#unsplash`).attr("src");
     console.log(currentImage)
     let emailInput = $('#email-entry').val();
     let validEmail = false;
@@ -65,6 +85,7 @@ function linkImage() {
       console.log('email invalid');
     }
   /* if the email is valid check if the email is already in the object and if so add to object or create new object */
+
 
     let emailLinkedAlready = false;
     let imageLinkedAlready = false;
@@ -82,7 +103,7 @@ function linkImage() {
         if (emailLinkedAlready) {
 
           for (let i = 0; i < linkedEmails[emailInput].length; i++) {
-            if (linkedEmails[emailInput][i] == currentImage) {
+            if (linkedEmails[emailInput][i] == [currentImage]) {
                 console.log('image already linked to email')
                 imageLinkedAlready = true;
                 break;
@@ -98,9 +119,31 @@ function linkImage() {
         console.log(linkedEmails)
       } else {
         linkedEmails[emailInput] = [currentImage];
+        console.log(Object.keys(linkedEmails))
+        $('#email-list').empty();
+        listEmail();
+      };
 
-        };
   console.log(linkedEmails)
     };
-
 };
+
+
+function listEmail() {
+  let imageList = $('#email-list')
+      for (const item in linkedEmails) {
+          $('#email-list').append($("<li onclick ='displayLinked()' id='"+ item + "'>" + item + "</a>"))
+    };
+};
+
+
+function displayLinked() {
+    $('#image-window').empty();
+    console.log("window empty")
+    let email = event.target.id
+    console.log(email)
+    for (let i = 0; i < linkedEmails[email].length; i++) {
+       $('#image-window').append($("<img src='" + linkedEmails[email][i] + "'>"))
+      console.log('Email matched')
+    };
+  };
