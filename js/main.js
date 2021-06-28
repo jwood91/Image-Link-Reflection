@@ -1,5 +1,3 @@
-
-
 /* gets the images from picsum api */
 const getImages = () => {
   const randomPage = Math.floor(Math.random() * (10) + 1);
@@ -25,7 +23,6 @@ function pickRandomImage(data){
   $('#unsplash').attr('value', imageId);
   $('#image-id').attr('value', imageId);
   $('#author-name').attr('value', imageAuthor);
-
 }
 
 $(document).ready(function() {
@@ -38,6 +35,7 @@ $(document).ready(function() {
 $(function() {
   imgTagThere = false
   $("#new-image").click(function() {
+    $('#image-window').empty();
     if ($('#unsplash').length) {
       getImages()
       console.log('image is there')
@@ -60,20 +58,16 @@ function toggleLink() {
 }
 
 
-// let
-//
-// function emailList() {
-//     linkedEmails[]
-// }
-
 
 /* validate email onclick when linking image */
 let linkedEmails = { };
-
+let currentImage = { };
 
 function linkImage() {
     const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
-    let currentImage = $(`#unsplash`).attr("src");
+    let currentImageID = $(`#unsplash`).attr("value");
+    currentImageData = [$(`#unsplash`).attr("src"), $(`#author-name`).attr("value"), $(`#unsplash`).attr("value")];
+    currentImage[currentImageID] = currentImageData;
     console.log(currentImage)
     let emailInput = $('#email-entry').val();
     let validEmail = false;
@@ -110,23 +104,24 @@ function linkImage() {
             }
           };
 
-        if (imageLinkedAlready) {
-          console.log(linkedEmails);
-          return;
-        }
-        console.log("email is already linked item added to object")
-        linkedEmails[emailInput].push([currentImage]);
-        console.log(linkedEmails)
-      } else {
-        linkedEmails[emailInput] = [currentImage];
-        console.log(Object.keys(linkedEmails))
-        $('#email-list').empty();
-        listEmail();
+          if (imageLinkedAlready) {
+              console.log(linkedEmails);
+              return;
+            }
+              console.log("email is already linked item added to object")
+              linkedEmails[emailInput][currentImageID].push([currentImageData]);
+              console.log(linkedEmails)
+        } else {
+            linkedEmails[emailInput] = currentImage;
+            console.log(Object.keys(linkedEmails))
+            $('#email-list').empty();
+            listEmail();
       };
+    };
 
   console.log(linkedEmails)
     };
-};
+
 
 
 function listEmail() {
@@ -141,9 +136,14 @@ function displayLinked() {
     $('#image-window').empty();
     console.log("window empty")
     let email = event.target.id
+    let imageObj = Object.keys(linkedEmails[email])
+    let imageValues = Object.values(linkedEmails[email])
+
     console.log(email)
-    for (let i = 0; i < linkedEmails[email].length; i++) {
-       $('#image-window').append($("<img src='" + linkedEmails[email][i] + "'>"))
-      console.log('Email matched')
-    };
+    for (let i = 0; i < imageValues.length; i++) {
+        console.log("image here")
+         $(`#image-window`).append($("<img src='" + imageValues[0][0] +"' id='" + imageValues[0][2] + "' >"))
+         $(`#author-name`).attr('value', imageValues[0][1])
+        console.log('Email matched')
+            };
   };
