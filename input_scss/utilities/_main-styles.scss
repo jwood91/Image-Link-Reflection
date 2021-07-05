@@ -1,30 +1,55 @@
+* {
+  box-sizing: border-box;
+font-family: 'Architects Daughter', cursive;  
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
 body {
   display:block;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- margin: 0;
- padding: 0;
- width: 100vw;
- height: 100vh;
- box-sizing: border-box;
+
+   box-sizing: border-box;
+   color: white;
+
  }
 
 header {
   height: 15%;
+  background-color: #173564;
 }
 #main-container {
+  flex-direction: column;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
   height: 85%;
+  @include mq('md') {
+    flex-direction: row;
+    width: 100%;
+    height: 85%;
+  }
+
 }
 
 #wrapper {
-  display: flex;
+  display: block;
+  position: relative;
   flex-direction: row;
-  justify-content: center;
-  
+  min-width: 100%;
+  width: 100%;
+  height: 100vh;
 
+
+}
+
+#my-content-container {
+  height: 100vh;
+  width: 100vw;
 }

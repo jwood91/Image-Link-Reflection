@@ -1,0 +1,18 @@
+@mixin mq($break) {
+  $value: map-get($breakpoints, $break);
+  $sm: map-get($breakpoints, 'sm');
+
+  @if $value == null {
+    @warn '"#{$break}" is not a valid breakpoint name'
+      }
+    @else if $value < $sm {
+      @media (max-width: $value) {
+        @content;
+      }
+    }
+    @else {
+        @media (min-width: $value) {
+          @content;
+        }
+    }
+  }

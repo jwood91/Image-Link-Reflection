@@ -12,39 +12,39 @@ const getImages = () => {
 
 /* selects a random image from the data provided */
 function pickRandomImage(data){
-  let randomImage = Math.floor(Math.random() * (data.length));
-  console.log(randomImage);
-  let displayImage = data[randomImage];
-  let imageUrl = displayImage.download_url;
-  let imageId = displayImage.id;
-  let imageAuthor = displayImage.author;
-  console.log(displayImage);
-  $('#unsplash').attr('src', imageUrl);
-  $('#unsplash').attr('value', imageId);
-  $('#image-id').attr('value', imageId);
-  $('#author-name').attr('value', imageAuthor);
-  $('#unsplash').attr('class', "base-image")
+    let randomImage = Math.floor(Math.random() * (data.length));
+    console.log(randomImage);
+    let displayImage = data[randomImage];
+    let imageUrl = displayImage.download_url;
+    let imageId = displayImage.id;
+    let imageAuthor = displayImage.author;
+    console.log(displayImage);
+    $('#unsplash').attr('src', imageUrl);
+    $('#unsplash').attr('value', imageId);
+    $('#image-id').attr('value', imageId);
+    $('#author-name').attr('value', imageAuthor);
+    $('#unsplash').attr('class', "base-image")
 }
 
 $(document).ready(function() {
-  getImages()
+    getImages()
+        });
 
-
-  });
-
+let scroll = document.querySelector('#scroll')
 /* onClick function for generating a new image */
 $(function() {
   imgTagThere = false
   $("#new-image").click(function() {
-    $('#image-window').empty();
+    $('#image-area').empty();
+    $(`#scroll`).addClass('scroll-hide');
     if ($('#unsplash').length) {
-      getImages()
-      console.log('image is there')
+        getImages()
+        console.log('image is there')
 
     } else {
-      $('#image-window').append($("<img id='unsplash' src=''/>"));
-      console.log('image is not there')
-      getImages()
+          $('#image-area').append($("<img id='unsplash' src=''/>"));
+          console.log('image is not there')
+          getImages()
     };
 
 
@@ -54,8 +54,12 @@ $(function() {
 
 
 function toggleLink() {
-  $(`#input-outer`).toggleClass('active');
-  console.log('linked');
+    $(`#input-outer`).toggleClass('active');
+    console.log('linked');
+}
+
+function displaySaved() {
+
 }
 
 
@@ -145,26 +149,25 @@ function listEmail() {
 
 
 function displayLinked() {
-    $('#image-window').empty();
+    $('#image-area').empty();
     $('#my-button').click();
     console.log("window empty")
+    $(`#scroll`).removeClass('scroll-hide');
     let email = event.target.id
     console.log(email)
     console.log(linkedEmails)
     console.log(linkedEmails[email].length)
-
-
     if (linkedEmails[email].length == 1) {
       for (const item in linkedEmails[email]) {
-          $(`#image-window`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-1'>"))
+          $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='base-image'>"))
       };
   } else if (linkedEmails[email].length == 2) {
         for (const item in linkedEmails[email]) {
-            $(`#image-window`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-2'>"))
+            $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-2'>"))
       };
   } else {
         for (const item in linkedEmails[email]) {
-            $(`#image-window`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-3'>"))
+            $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-3'>"))
       };
     };
   };

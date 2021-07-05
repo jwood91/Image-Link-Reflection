@@ -1,7 +1,12 @@
-@import 'main/side-menu',
-        'main/image-container';
+@import 'utilities/variables',
+        'utilities/mixins',
+        'utilities/main-styles';
 
-@import 'utilities/main-styles';
 
 
 @import 'header/header';
+
+
+@import 'main/side-menu',
+        'main/image-container',
+        'main/linked-menu';

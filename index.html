@@ -7,9 +7,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
       <script src="https://kit.fontawesome.com/cd35332ff4.js"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="node_modules/offside-js/dist/offside.css">
-        <script src="node_modules/offside-js/dist/offside.js"></script>
-        <link rel="stylesheet" href="output_css/styles.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="node_modules/offside-js/dist/offside.css">
+      <script src="node_modules/offside-js/dist/offside.js"></script>
+      <link rel="stylesheet" href="output_css/styles.css">
       <title>ImageLINK | link images to your email!</title>
   </head>
 
@@ -47,10 +50,9 @@
                 </div>
 
                 <div id="image-information">
-                  <ul id="Image-info">
+                  <ul id="image-info">
                     <div id="info-head"><span>Image</span><input type="number" id="image-id" name="image-id" value="" readonly></span></div>
                     <li>Author<input type="text" id="author-name" value="" readonly></input>
-                    <li><a id="website-link" href="#">View image on Unsplash</a></li>
                   </ul>
 
                 </div>
@@ -58,12 +60,23 @@
               </div>
             </div>
 
-            <div id="image-window"><img id="unsplash" value="" src="" alt="picsum-image"><j/img> </div>
+            <div id="image-window">
+              <div id="scroll" class="scroll scroll-hide">
+                <h3>Scroll Right to View Other Saved Images</h3>
+              </div>
+              <div id="image-area">
+
+                  <img id="unsplash" value="" src="" alt="picsum-image"></img>
+             </div>
           </div>
         </div>
+      </div>
         <nav id="my-menu">
-          <ul id="email-list">
-          </ul>
+          <div id="border-div">
+            <h2>Click email to view linked images</h2>
+            <ul id="email-list">
+            </ul>
+          </div>
         </nav>
       </div>
 
