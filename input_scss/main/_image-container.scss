@@ -9,6 +9,7 @@
   overflow: scroll;
   background-color: #5B616A;
   border: 3px solid white;
+  border-top: none;
   order: 1;
   @include mq('md') {
     width: 85%;
@@ -45,7 +46,7 @@
   max-width: 95%;
   height: 95%;
   object-fit: cover;
-  margin-top: 0.65em;
+  margin-top:0em;
   @include mq('md') {
     margin-top: 1em;
   };
