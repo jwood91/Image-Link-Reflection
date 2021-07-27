@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-font-family: 'Architects Daughter', cursive;  
+font-family: 'Architects Daughter', cursive;
 }
 
 body, html {
@@ -52,4 +52,9 @@ header {
 #my-content-container {
   height: 100vh;
   width: 100vw;
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }

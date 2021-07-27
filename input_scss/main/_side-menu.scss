@@ -23,13 +23,40 @@
   border: 3px solid white;
   border-top: none;
   .side-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     align-self: center;
     width: 80%;
     height: 50px;
+    border: 3px solid black;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.5s;
+    .button-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 65%;
+      height: 80%;
+      font-size: 18px;
+      margin-right: 10px;
+
+      i {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
   };
+  .side-button:hover {
+    border: 3px solid white;
+    transition: 0s;
+  }
 };
+
+
+
 
 #email-link {
   display: flex;
@@ -54,10 +81,12 @@
   height: 90px;
   border-radius: 5px;
   background-color: #0080ff;
+  transition: 0.5s;
   @include mq('md') {
     transform: translate(0%, 0%);
     margin-bottom: 0px;
     width: 20em;
+    transition: 0.5s;
 
 };
 
@@ -68,8 +97,8 @@
     border-top: none;
     border-right: none;
     transform: rotate(45deg);
-    top:32%;
-    left: -1.3em;
+    top:30%;
+    left: -0.7em;
     width: 39px;
     height: 39px;
     background-color: inherit;
@@ -91,10 +120,10 @@
 
     margin-top: -15px;
     input{
-      width: 60%;
+      width: 80%;
       height: 3em;
       background-color: white;
-      margin-left: 1em;
+      margin-left: 0.2em;
       border-radius: 5px 0px 0px 5px;;
       border-right: none;
       border: 1px solid lightgrey;
@@ -107,7 +136,12 @@
       border: 1px solid lightgrey;
       outline: none;
       border-radius: 0px 5px 5px 0px;
+      cursor: pointer;
     };
+    
+    button:hover {
+      background-color: lightgrey;
+    }
 };
   h2 {
     display: flex;
@@ -134,6 +168,9 @@
 
 
 .button-link-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #0080ff;
 
 };

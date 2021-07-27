@@ -10,6 +10,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="node_modules/offside-js/dist/offside.css">
       <script src="node_modules/offside-js/dist/offside.js"></script>
       <link rel="stylesheet" href="output_css/styles.css">
@@ -21,7 +22,7 @@
       <div id="my-content-container">
         <header>
           <div id="page-header">
-            <button type="button" id="my-button">Email's with Linked Images</button>
+            <button type="button" id="my-button">Linked Images</button>
             <div id="header-inner">
 
               <div id="site-logo">
@@ -36,9 +37,9 @@
        <div id="main-container">
             <div id="sidebar">
               <div id="sidebar-inner">
-                <button id="new-image" class="side-button button-image-new">Next Image</button>
+                <button id="new-image" class="side-button button-image-new"><div id="new-image-content" class="button-content"><i class="far fa-images"></i><span>Next Image</span></div></button>
                 <div id="email-link">
-                    <button id="button-link" class="side-button button-link-email" onClick="toggleLink()"><i class="fas fa-link"></i>Link to email</button>
+                    <button id="button-link" class="side-button button-link-email" onClick="toggleLink()"><div id="link-button-content" class="button-content"><i class="fas fa-link"></i><span>Link to email</span></div></button>
                     <div id="input-outer" class="hidden">
                       <div id="input-arrow"></div>
                       <h2>Enter Your Email to Link Picture</h2>
