@@ -1,5 +1,6 @@
 #image-window {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   height: calc(100vh - 100px);
   justify-content: space-around;
@@ -11,6 +12,7 @@
   border: 3px solid white;
   border-top: none;
   order: 1;
+  overflow: hidden;
   @include mq('md') {
     width: 85%;
     order: 2;
@@ -20,7 +22,7 @@
   };
 };
 
-#image-area {
+.image-area {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -28,14 +30,27 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  overflow: scroll;
-  scroll-snap-type: x mandatory;
+  overflow-y: hidden;
+  overflow-x: hidden;
 
   @include mq('md') {
     flex-direction: row;
     align-items: flex-start;
   };
 };
+.scroll-linked {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  @include mq('md') {
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+  }
+.scroll-snap-child {
+  scroll-snap-align: start;
+}
+}
 
 
 
@@ -54,9 +69,16 @@
 
 
 .saved-image-2 {
-  width: 49%;
-  height: 500px;
-  scroll-snap-align: center;
+  width: 100%;
+  max-width: 100%;
+  height: 95%;
+  object-fit: cover;
+  margin-top:0em;
+  @include mq('md') {
+      width: 49%;
+      height: 500px;
+      scroll-snap-align: center;
+    };
 };
 
 .saved-image-3 {
@@ -76,14 +98,16 @@
   align-items: center;
   position: absolute;
   align-self: center;
-  bottom: 28%;
-  width: 15em;
-  height: 2em;
+  top: 0%;
+  width: 12em;
+  height: 3em;
+  padding: 3px;
   background-color: #173564;
   h3{
     color: white;
-    font-size: 13px;
+    font-size: 15px;
     text-align: center;
+    padding: 3px;
   };
   @include mq('md') {
     display: none;
@@ -93,3 +117,44 @@
 .scroll-hide {
   visibility: hidden;
 };
+
+#link-success {
+  background-color: #1aff1a;
+}
+
+#link-failed {
+  background-color: #FF7F7F;
+}
+
+.link-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30%;
+  width: 15em;
+  height: 2em;
+  border: 2px solid white;
+  color: black;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 5px;
+
+}
+.hide-message {
+  opacity: 0;
+}
+.display-message {
+  -webkit-animation: fadeinout 2.5s linear forwards;
+  animation: fadeinout 2.5s linear forwards;
+}
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}

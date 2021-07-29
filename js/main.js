@@ -35,7 +35,8 @@ let scroll = document.querySelector('#scroll')
 $(function() {
   imgTagThere = false
   $("#new-image").click(function() {
-    $('#image-area').empty();
+    $(`#image-area`).empty();
+    $(`#image-area`).removeClass('scroll-linked')
     $(`#scroll`).addClass('scroll-hide');
     if ($('#unsplash').length) {
         getImages()
@@ -58,10 +59,18 @@ function toggleLink() {
     console.log('linked');
 }
 
-function displaySaved() {
-
+function hideEmailInput() {
+  $(`#input-outer`).removeClass('active').addClass('hidden');
 }
 
+function showScrollInfo() {
+  if ($("#scroll").hasClass("fadeout")) {
+      $("#scroll").removeClass("fadeout").addClass("fadein");
+      setTimeout(function () {
+        $('#scroll').removeClass("fadein").addClass("fadeout");
+      }, 3000);
+    };
+};
 
 
 /* validate email onclick when linking image */
@@ -88,6 +97,13 @@ function linkImage() {
 
     } else {
       console.log('email invalid');
+      if ($("#email-error").hasClass("fadeout")) {
+          $("#email-error").removeClass("fadeout").addClass("fadein");
+          setTimeout(function () {
+            $('#email-error').removeClass("fadein").addClass("fadeout");
+          }, 5000);
+}
+
     }
   /* if the email is valid check if the email is already in the object and if so add to object or create new object */
 
@@ -117,8 +133,12 @@ function linkImage() {
 
           if (imageLinkedAlready) {
                 console.log(linkedEmails);
+                $(`#link-failed`).removeClass('hide-message').addClass('display-message');
+                setTimeout(() => {  $(`#link-failed`).removeClass('display-message').addClass('hide-message'); }, 2500);
               return;
             };
+            $(`#link-success`).removeClass('hide-message').addClass('display-message');
+            setTimeout(() => {  $(`#link-success`).removeClass('display-message').addClass('hide-message'); }, 2500);
           console.log("email is already linked item added to object")
           linkedEmails[emailInput].push(currentImageData);
 
@@ -128,7 +148,8 @@ function linkImage() {
 
             console.log(currentImage)
             linkedEmails[emailInput] = currentImage;
-
+            $(`#link-success`).removeClass('hide-message').addClass('display-message');
+            setTimeout(() => {  $(`#link-success`).removeClass('display-message').addClass('hide-message'); }, 2500);
             console.log(linkedEmails[emailInput])
             $('#email-list').empty();
             listEmail();
@@ -143,14 +164,17 @@ function linkImage() {
 function listEmail() {
   let imageList = $('#email-list')
       for (const item in linkedEmails) {
-          $('#email-list').append($("<li onclick ='displayLinked()'  id='"+ item + "'>" + item + " </li>"))
+          $('#email-list').append($("<li onclick ='displayLinked(); showScrollInfo();'  id='"+ item + "'>" + item + " </li>"))
     };
 };
 
 
 function displayLinked() {
+
     $('#image-area').empty();
     $('#my-button').click();
+    $('#image-id').attr("value", ' ');
+    $('#author-name').attr("value", ' ');
     console.log("window empty")
     $(`#scroll`).removeClass('scroll-hide');
     let email = event.target.id
@@ -160,14 +184,17 @@ function displayLinked() {
     if (linkedEmails[email].length == 1) {
       for (const item in linkedEmails[email]) {
           $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='base-image'>"))
+
       };
   } else if (linkedEmails[email].length == 2) {
         for (const item in linkedEmails[email]) {
-            $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-2'>"))
+            $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-2 scroll-snap-child'>"))
+            $(`#image-area`).addClass('scroll-linked');
       };
   } else {
         for (const item in linkedEmails[email]) {
-            $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-3'>"))
+            $(`#image-area`).append($("<img  src='" + linkedEmails[email][item]["download_url"] +"' id='" + linkedEmails[email][item]["id"] + "' class='saved-image-3 scroll-snap-child'>"))
+            $(`#image-area`).addClass('scroll-linked');
       };
     };
   };

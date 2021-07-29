@@ -22,7 +22,7 @@
       <div id="my-content-container">
         <header>
           <div id="page-header">
-            <button type="button" id="my-button">Linked Images</button>
+            <button type="button" id="my-button" onclick="hideEmailInput()">Linked Images</button>
             <div id="header-inner">
 
               <div id="site-logo">
@@ -37,14 +37,15 @@
        <div id="main-container">
             <div id="sidebar">
               <div id="sidebar-inner">
-                <button id="new-image" class="side-button button-image-new"><div id="new-image-content" class="button-content"><i class="far fa-images"></i><span>Next Image</span></div></button>
+                <button id="new-image" class="side-button button-image-new"><span id="new-image-content" class="button-content"><i class="far fa-images"></i><span>Next Image</span></span></button>
                 <div id="email-link">
-                    <button id="button-link" class="side-button button-link-email" onClick="toggleLink()"><div id="link-button-content" class="button-content"><i class="fas fa-link"></i><span>Link to email</span></div></button>
+                    <button id="button-link" class="side-button button-link-email" onClick="toggleLink()"><span id="link-button-content" class="button-content"><i class="fas fa-link"></i><span>Link to email</span></span></button>
                     <div id="input-outer" class="hidden">
+                      <div id="email-error" class="fadeout"><div id="email-error-inner"><h2>Invalid email, please enter a valid email address to link image.</h2></div></div>
                       <div id="input-arrow"></div>
-                      <h2>Enter Your Email to Link Picture</h2>
+                      <h2 id="enter-text">Enter Your Email to Link Picture</h2>
                       <div id="input-info">
-                          <input id="email-entry" type="text" placeholder="Enter Email Here.."></input>
+                          <input id="email-entry" type="text" placeholder="Enter Email Here..">
                           <button type="submit" onclick="linkImage()"><i class="fas fa-link"></i></button>
                       </div>
                     </div>
@@ -52,8 +53,8 @@
 
                 <div id="image-information">
                   <ul id="image-info">
-                    <div id="info-head"><span>Image</span><input type="number" id="image-id" name="image-id" value="" readonly></span></div>
-                    <li>Author<input type="text" id="author-name" value="" readonly></input>
+                    <li id="info-head"><span>Image</span><input type="number" id="image-id" name="image-id" readonly></li>
+                    <li>Author<input type="text" id="author-name" readonly>
                   </ul>
 
                 </div>
@@ -62,12 +63,13 @@
             </div>
 
             <div id="image-window">
-              <div id="scroll" class="scroll scroll-hide">
+              <div id="link-success" class="link-message hide-message"><div id="success-inner"><p>Image Linked Successfully</p></div></div>
+              <div id="link-failed" class="link-message hide-message"><div id="failed-inner"><p>Image Already Linked</p></div></div>
+              <div id="scroll" class="scroll scroll-hide fadeout">
                 <h3>Scroll Right to View Other Saved Images</h3>
               </div>
-              <div id="image-area">
-
-                  <img id="unsplash" value="" src="" alt="picsum-image"></img>
+              <div id="image-area" class="image-area">
+                  <img id="unsplash" src="data:," alt="picsum-image">
              </div>
           </div>
         </div>

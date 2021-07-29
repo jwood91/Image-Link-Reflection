@@ -60,6 +60,7 @@
 
 #email-link {
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -82,6 +83,7 @@
   border-radius: 5px;
   background-color: #0080ff;
   transition: 0.5s;
+  z-index: 9999999999;
   @include mq('md') {
     transform: translate(0%, 0%);
     margin-bottom: 0px;
@@ -138,12 +140,12 @@
       border-radius: 0px 5px 5px 0px;
       cursor: pointer;
     };
-    
+
     button:hover {
       background-color: lightgrey;
     }
 };
-  h2 {
+  #enter-text{
     display: flex;
     align-items: center;
     margin: -5px 0px -5px 0px;
@@ -252,4 +254,39 @@
 
     }
   };
+}
+
+#email-error {
+  display: flex;
+  visibility: visible;
+  position: absolute;
+  left: 5%;
+  top: -55%;
+  height: 3em;
+  bottom: 0%;
+  width: 90%;
+  border-radius: 5px;
+  background-color:  #FF7F7F;
+
+  #email-error-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      text-align: center;
+      font-size: 15px;
+      color: black;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+    };
+
+  }
+}
+
+.fadein, .fadeout {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+.fadein {
+  opacity: 1;
 }
