@@ -86,13 +86,13 @@ function linkImage() {
       author: $(`#author-name`).attr("value"),
       id: $(`#unsplash`).attr("value")
     };
-
+    currentImage = [currentImageData]
     if (currentImageID == " ") {
       // console.log("image not found")
       return;
-    }
+    } else {
 
-    currentImage = [currentImageData]
+
     // console.log(currentImage)
 
     let validEmail = false;
@@ -160,7 +160,7 @@ function linkImage() {
             listEmail();
       };
     };
-
+  };
   // console.log(linkedEmails)
     };
 
